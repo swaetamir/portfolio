@@ -45,11 +45,11 @@ export type ProjectRow = {
     },
     {
       slug: "hackathon",
-      title: "Hackathon Project (1st place winner)",
+      title: "Memory Box",
       top: 376,
-      deadpan: "Coming soon...",
+      deadpan: "Memory box curated for a loved one with real time sharing",
       year: "2026",
-      stack: ["React", "TypeScript", "ML (light)", "Firebase"],
+      stack: ["React", "TypeScript", "ML (light)", "Supabase"],
       links: [{ label: "Devpost", href: "https://devpost.com/yourproject" }],
     },
     {

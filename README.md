@@ -1,2 +1,1 @@
-[https://portfolio-swaetamir.vercel.app/projects
-](https://portfolio-swaetamir.vercel.app)
+portfolio-nftwr0eg6-swaetamir.vercel.app

@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+
 type CloseButtonProps = {
   onClick?: () => void;
   href?: string;
@@ -38,10 +40,10 @@ export default function CloseButton({
     </div>
   );
 
-  // navigation close (projects poster)
+  // navigation close (route-based pages)
   if (href) {
     return (
-      <a
+      <Link
         href={href}
         aria-label={ariaLabel}
         style={{
@@ -53,13 +55,14 @@ export default function CloseButton({
         }}
       >
         {ButtonContent}
-      </a>
+      </Link>
     );
   }
 
   // state close (popup)
   return (
     <button
+      type="button"
       onClick={onClick}
       aria-label={ariaLabel}
       style={{

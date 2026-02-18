@@ -1,64 +1,83 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import Image from "next/image";
+import { PROJECTS } from "@/lib/projects";
+import CloseButton from "@/components/CloseButton";
 
-const W = 1392;
-const H = 900;
+type Props = {
+  open: boolean;
+  onClose: () => void;
+  onSelect: (slug: string) => void;
+};
 
-export default function PosterStage({ children }: { children: React.ReactNode }) {
-  const [vw, setVw] = useState(0);
-  const [vh, setVh] = useState(0);
-
-  useEffect(() => {
-    const onResize = () => {
-      setVw(window.innerWidth);
-      setVh(window.innerHeight);
-    };
-    onResize();
-    window.addEventListener("resize", onResize);
-    return () => window.removeEventListener("resize", onResize);
-  }, []);
-
-  const padding = 32; // p-8
-
-  const scale = useMemo(() => {
-    const availW = Math.max(0, vw - padding * 2);
-    const availH = Math.max(0, vh - padding * 2);
-    if (!availW || !availH) return 1;
-    return Math.min(availW / W, availH / H, 1);
-  }, [vw, vh]);
-
-  const scaledW = W * scale;
-  const scaledH = H * scale;
+export default function ProjectsWindow({ open, onClose, onSelect }: Props) {
+  if (!open) return null;
 
   return (
     <div
       style={{
-        position: "fixed",
-        inset: 0,
-        padding,
-        overflow: "auto", // <- scroll instead of clipping
+        width: 1435,
+        height: 805,
+        left: 38,
+        top: 104,
+        position: "absolute",
         background: "white",
+        overflow: "hidden",
+        border: "1px solid black",
+        zIndex: 60,
       }}
     >
+      {/* close */}
+      <div style={{ position: "absolute", right: 9, top: 9, zIndex: 80 }}>
+        <CloseButton onClick={onClose} ariaLabel="Close projects" />
+      </div>
+
+      {/* list */}
       <div
         style={{
-          width: scaledW,
-          height: scaledH,
-          margin: "auto", // centers inside the scrollable stage
+          position: "absolute",
+          left: 48,
+          top: 35,
+          right: 48,
+          bottom: 35,
+          overflowY: "auto",
+          paddingRight: 8,
         }}
       >
-        <div
-          style={{
-            width: W,
-            height: H,
-            transform: `scale(${scale})`,
-            transformOrigin: "top left",
-          }}
-        >
-          {children}
-        </div>
+        {PROJECTS.map((p) => (
+          <button
+            key={p.slug}
+            type="button"
+            onClick={() => onSelect(p.slug)}
+            style={{
+              display: "block",
+              width: "100%",
+              textAlign: "left",
+              background: "transparent",
+              border: "none",
+              padding: "0 0 10px 0",
+              margin: 0,
+              cursor: "pointer",
+              color: "black",
+              fontSize: 20,
+              fontWeight: 700,
+              fontFamily: "inherit",
+            }}
+          >
+            {p.title}
+          </button>
+        ))}
       </div>
+
+      {/* faint preview background (optional) */}
+      {PROJECTS[0]?.previewSrc ? (
+        <Image
+          src={PROJECTS[0].previewSrc}
+          alt=""
+          fill
+          style={{ objectFit: "cover", opacity: 0.04, pointerEvents: "none" }}
+        />
+      ) : null}
     </div>
   );
 }
