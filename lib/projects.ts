@@ -26,7 +26,7 @@ export type ProjectRow = {
       deadpan: "Spiral of all things data.",
       year: "2026",
       stack: ["Next.js", "TypeScript", "React Three Fiber", "Three.js", "Tailwind CSS"],
-      links: [{ label: "Substack", href:"https://substack.com/@thedatastudioarchive"}]
+      links: [{ label: "GitHub", href:"https://github.com/swaetamir/datastudio.git"},{ label: "Substack", href:"https://substack.com/@thedatastudioarchive"}]
     },
     {
       slug: "preference-drift",
