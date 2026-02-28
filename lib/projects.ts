@@ -34,7 +34,7 @@ export type ProjectRow = {
       top: 240,
       previewSrc: "/previews/preference-drift.png",
       previewOpacity: 0.3,
-      heroSrc: "/previews/preference-drift.png",
+      heroSrc: "/previews/tastemap.gif",
       deadpan: "My listening habits, observed over time.",
       year: "2025–2026",
       stack: ["Next.js", "Spotify API", "Charts", "Data viz"],
