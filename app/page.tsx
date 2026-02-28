@@ -58,12 +58,12 @@ export default function Home() {
           SWAETA MIR
         </div>
 
-        {/* underline */}
-        <div style={{ width: 245.01, height: 0, left: 50, top: 76, position: "absolute", borderTop: "2px solid black" }} />
-{/*}
-        <div style={{ left: 50, top: 75, position: "absolute", fontSize: 15, fontWeight: 700 }}>
+        {/* underline 
+        <div style={{ width: 245.01, height: 0, left: 50, top: 76, position: "absolute", borderTop: "2px solid black" }} />*/}
+
+        <div style={{ left: 50, top: 75, position: "absolute", fontSize: 14.5, fontWeight: 700 }}>
           Computer Science &amp; Statistics Student
-        </div> */}
+        </div> 
 
         {/* about */}
         <button
@@ -72,7 +72,7 @@ export default function Home() {
           onClick={() => { setAboutOpen((v) => !v); bringToFront("about"); }}
           style={{
             left: 50,
-            top: 130,
+            top: 155,
             position: "absolute",
             fontSize: 20,
             fontWeight: 700,
@@ -91,7 +91,7 @@ export default function Home() {
               width: 90,
               height: 0,
               left: 50,
-              top: 154,
+              top: 179,
               position: "absolute",
               borderTop: "2px solid black",
               zIndex: 60,
@@ -106,7 +106,7 @@ export default function Home() {
         onClick={() => { setProjectsOpen((v) => !v); bringToFront("projects"); }}
         style={{
           left: 50,
-          top: 101,
+          top: 127,
           position: "absolute",
           color: "black",
           fontSize: 20,
@@ -127,7 +127,7 @@ export default function Home() {
               width: 272,
               height: 0,
               left: 50,
-              top: 126,
+              top: 151,
               position: "absolute",
               borderTop: "2px solid black",
               zIndex: 60,

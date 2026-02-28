@@ -144,7 +144,8 @@ export default function ProjectWindow({ slug, onClose, zIndex, onFocus }: Props)
                   fontSize: 15,
                   fontWeight: 700,
                   color: "black",
-                  textDecoration: "none",
+                  textDecoration: "underline",
+                  textUnderlineOffset: 3,
                 }}
               >
                 {l.label}
@@ -186,24 +187,11 @@ export default function ProjectWindow({ slug, onClose, zIndex, onFocus }: Props)
                   fontWeight: 700,
                 }}
               >
-                add screenshot
+                Coming soon...
               </div>
             )}
           </div>
 
-          {/* overlay label */}
-          <div
-            style={{
-              left: 390,
-              top: 328,
-              position: "absolute",
-              fontSize: 11,
-              fontWeight: 700,
-              pointerEvents: "none",
-            }}
-          >
-            VIDEO DEMO/GIF
-          </div>
         </div>
       </div>
     </div>

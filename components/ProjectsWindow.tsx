@@ -32,6 +32,7 @@ export default function ProjectsWindow({ open, onClose, onSelect, projects, zInd
   const H = 500;
 
   const [pos, setPos] = useState({ x: 300, y: 170 });
+  const [hoveredSlug, setHoveredSlug] = useState<string | null>(null);
 
   const clamp = (n: number, min: number, max: number) => Math.max(min, Math.min(max, n));
 
@@ -139,51 +140,67 @@ export default function ProjectsWindow({ open, onClose, onSelect, projects, zInd
             }}
             onMouseDown={(e) => e.stopPropagation()}
           >
-            {projects.map((p) => (
-              <button
-                key={p.slug}
-                type="button"
-                onClick={() => onSelect(p.slug)}
-                style={{
-                  width: "100%",
-                  height: 110,
-                  position: "relative",
-                  overflow: "hidden",
-                  borderBottom: "1px solid black",
-                  background: "white",
-                  color: "black",
-                  display: "block",
-                  cursor: "pointer",
-                  padding: 0,
-                }}
-              >
-                {p.previewSrc && (
-                  <Image
-                    src={p.previewSrc}
-                    alt=""
-                    fill
-                    style={{ objectFit: "cover", opacity: p.previewOpacity ?? 0.3 }}
-                  />
-                )}
-
-                <div
+            {projects.map((p) => {
+              const isHovered = hoveredSlug === p.slug;
+              const dimmed = hoveredSlug !== null && !isHovered;
+              return (
+                <button
+                  key={p.slug}
+                  type="button"
+                  onClick={() => onSelect(p.slug)}
+                  onMouseEnter={() => setHoveredSlug(p.slug)}
+                  onMouseLeave={() => setHoveredSlug(null)}
                   style={{
-                    position: "absolute",
-                    inset: 0,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    fontSize: 20,
-                    fontWeight: 700,
-                    textAlign: "center",
-                    padding: "0 24px",
-                    pointerEvents: "none",
+                    width: "100%",
+                    height: 110,
+                    position: "relative",
+                    overflow: "hidden",
+                    borderBottom: "1px solid black",
+                    background: "white",
+                    color: "black",
+                    display: "block",
+                    cursor: "pointer",
+                    padding: 0,
+                    transform: isHovered ? "scale(1.03)" : "scale(1)",
+                    opacity: dimmed ? 0.5 : 1,
+                    transition: "transform 0.15s ease, opacity 0.15s ease, outline 0.15s ease",
+                    zIndex: isHovered ? 1 : 0,
+                    outline: isHovered ? "1px solid black" : "none",
+                    outlineOffset: "-1px",
                   }}
                 >
-                  {p.title}
-                </div>
-              </button>
-            ))}
+                  {p.previewSrc && (
+                    <Image
+                      src={p.previewSrc}
+                      alt=""
+                      fill
+                      style={{
+                        objectFit: "cover",
+                        opacity: isHovered ? 0.6 : (p.previewOpacity ?? 0.3),
+                        transition: "opacity 0.15s ease",
+                      }}
+                    />
+                  )}
+
+                  <div
+                    style={{
+                      position: "absolute",
+                      inset: 0,
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      fontSize: 20,
+                      fontWeight: 700,
+                      textAlign: "center",
+                      padding: "0 24px",
+                      pointerEvents: "none",
+                    }}
+                  >
+                    {p.title}
+                  </div>
+                </button>
+              );
+            })}
           </div>
         </div>
       </div>
