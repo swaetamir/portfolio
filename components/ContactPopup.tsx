@@ -43,9 +43,10 @@ type Props = {
       const s = scaleRef.current;
       const dx = e.clientX - start.current.x;
       const dy = e.clientY - start.current.y;
+      const W = 408, H = 214;
       setPos({
-        left: startPos.current.left + dx / s,
-        top: startPos.current.top + dy / s,
+        left: Math.max(10, Math.min(1392 - W - 10, startPos.current.left + dx / s)),
+        top: Math.max(10, Math.min(900 - H - 10, startPos.current.top + dy / s)),
       });
     }
   

@@ -17,8 +17,8 @@ export type ProjectRow = {
 
   export const PROJECTS: ProjectRow[] = [
     {
-      slug: "data-studio",
-      title: "Data Studio",
+      slug: "the-spiral",
+      title: "The Spiral",
       top: 104,
       previewSrc: "/previews/spiral.gif",
       previewOpacity: 0.3,

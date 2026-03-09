@@ -123,7 +123,7 @@ export default function ProjectsWindow({ open, onClose, onSelect, projects, zInd
             Selected Works &amp; Experiments
           </div>
 
-          <div style={{ width: 305, height: 0, left: 38, top: 56, position: "absolute", borderTop: "2px solid black" }} />
+          <div style={{ width: 300, height: 0, left: 38, top: 50, position: "absolute", borderTop: "2px solid black" }} />
 
           {/* scroll area */}
           <div
@@ -134,13 +134,13 @@ export default function ProjectsWindow({ open, onClose, onSelect, projects, zInd
               width: W - 60,
               height: H - 108,
               overflowY: "auto",
-              border: "1px solid black",
+              overflowX: "hidden",
               background: "white",
               pointerEvents: "auto",
             }}
             onMouseDown={(e) => e.stopPropagation()}
           >
-            {projects.map((p) => {
+            {projects.map((p, i) => {
               const isHovered = hoveredSlug === p.slug;
               const dimmed = hoveredSlug !== null && !isHovered;
               return (
@@ -155,7 +155,7 @@ export default function ProjectsWindow({ open, onClose, onSelect, projects, zInd
                     height: 110,
                     position: "relative",
                     overflow: "hidden",
-                    borderBottom: "1px solid black",
+                    borderTop: i === 0 ? "none" : "1px solid black",
                     background: "white",
                     color: "black",
                     display: "block",
@@ -202,6 +202,19 @@ export default function ProjectsWindow({ open, onClose, onSelect, projects, zInd
               );
             })}
           </div>
+
+          {/* border overlay — always on top of scaled items */}
+          <div
+            style={{
+              position: "absolute",
+              left: 30,
+              top: 78,
+              width: W - 60,
+              height: H - 108,
+              border: "1px solid black",
+              pointerEvents: "none",
+            }}
+          />
         </div>
       </div>
     </div>
