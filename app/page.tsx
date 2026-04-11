@@ -6,6 +6,7 @@ import ContactPopup from "@/components/ContactPopup";
 import ProjectsWindow from "@/components/ProjectsWindow";
 import ProjectWindow from "@/components/ProjectWindow";
 import AboutPopup from "@/components/AboutPopup";
+import MobileView from "@/components/MobileView";
 import { PROJECTS } from "@/lib/projects";
 
 export default function Home() {
@@ -14,9 +15,11 @@ export default function Home() {
   const [projectsOpen, setProjectsOpen] = useState(false);
   const [activeSlug, setActiveSlug] = useState<string | null>(null);
 
+  const [isMobile, setIsMobile] = useState(false);
   const [scale, setScale] = useState(1);
   useEffect(() => {
     function update() {
+      setIsMobile(window.innerWidth < 768);
       setScale(Math.min(
         (window.innerWidth - 64) / 1392,
         (window.innerHeight - 64) / 900,
@@ -44,6 +47,8 @@ export default function Home() {
       })),
     []
   );
+
+  if (isMobile) return <MobileView />;
 
   return (
     <main style={{ width: "100vw", height: "100vh", display: "flex", alignItems: "center", justifyContent: "center", background: "white", overflow: "hidden", color: "black" }}>
