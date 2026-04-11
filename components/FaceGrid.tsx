@@ -41,7 +41,7 @@ export default function FaceGrid() {
           width={200}
           height={200}
           style={{ position: "absolute", left: f.left, top: f.top }}
-          priority={i < 3}
+          priority
         />
       ))}
     </>
