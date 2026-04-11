@@ -11,7 +11,7 @@ type Screen =
   | { id: "projects" }
   | { id: "project"; slug: string };
 
-const MOBILE_FACES = ["unimpressed", "happy", "tired"] as const;
+const MOBILE_FACES = ["unimpressed", "happy", "unimpressed"] as const;
 
 function BackButton({ onBack }: { onBack: () => void }) {
   return (
@@ -37,12 +37,12 @@ function BackButton({ onBack }: { onBack: () => void }) {
 
 function HomeScreen({ onNav }: { onNav: (screen: Screen) => void }) {
   return (
-    <div style={{ display: "flex", height: "100%", padding: "40px 32px", justifyContent: "space-between" }}>
+    <div style={{ display: "flex", height: "100%", padding: "40px 32px", gap: 16 }}>
       {/* left */}
-      <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+      <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", flex: 1 }}>
         <div>
-          <div style={{ fontSize: 28, fontWeight: 700, marginBottom: 6 }}>SWAETA MIR</div>
-          <div style={{ fontSize: 12, fontWeight: 700, marginBottom: 40 }}>
+          <div style={{ fontSize: 26, fontWeight: 700, marginBottom: 6, whiteSpace: "nowrap" }}>SWAETA MIR</div>
+          <div style={{ fontSize: 11, fontWeight: 700, marginBottom: 40 }}>
             Computer Science &amp; Statistics Student
           </div>
 
@@ -84,8 +84,8 @@ function HomeScreen({ onNav }: { onNav: (screen: Screen) => void }) {
             key={face}
             src={`/faces/${face}.png`}
             alt={face}
-            width={90}
-            height={90}
+            width={108}
+            height={108}
             style={{ display: "block" }}
           />
         ))}
