@@ -11,7 +11,7 @@ type Screen =
   | { id: "projects" }
   | { id: "project"; slug: string };
 
-const MOBILE_FACES = ["unimpressed", "happy", "unimpressed"] as const;
+const MOBILE_FACES = ["unimpressed", "happy", "questioning"] as const;
 
 function BackButton({ onBack }: { onBack: () => void }) {
   return (
@@ -165,7 +165,7 @@ function ProjectsScreen({ onBack, onSelect }: { onBack: () => void; onSelect: (s
       </div>
 
       <div style={{ fontSize: 22, fontWeight: 700, marginBottom: 20 }}>Selected Works &amp; Experiments</div>
-      <div style={{ width: "100%", borderTop: "2px solid black", marginBottom: 8 }} />
+      <div style={{ marginBottom: 8 }} />
 
       <div style={{ overflowY: "auto", flex: 1 }}>
         {PROJECTS.map((p, i) => (
