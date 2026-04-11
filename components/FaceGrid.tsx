@@ -1,5 +1,4 @@
-import Image from "next/image";
-
+/* eslint-disable @next/next/no-img-element */
 type FaceKey = "unimpressed" | "happy" | "tired" | "questioning";
 
 type FaceItem = {
@@ -26,22 +25,17 @@ const faces: FaceItem[] = [
   { key: "happy", alt: "happy 2", left: 1142, top: 663 },
 ];
 
-function srcFor(key: FaceKey) {
-  return `/faces/${key}.png`;
-}
-
 export default function FaceGrid() {
   return (
     <>
       {faces.map((f, i) => (
-        <Image
+        <img
           key={`${f.key}-${i}`}
-          src={srcFor(f.key)}
+          src={`/faces/${f.key}.png`}
           alt={f.alt}
           width={200}
           height={200}
           style={{ position: "absolute", left: f.left, top: f.top }}
-          priority
         />
       ))}
     </>
