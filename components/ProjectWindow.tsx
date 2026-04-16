@@ -5,9 +5,9 @@ import { useEffect, useRef, useState } from "react";
 import { PROJECTS } from "@/lib/projects";
 import CloseButton from "@/components/CloseButton";
 
-const W = 720;
-const H = 480;
-const HERO_H = 280;
+const W = 800;
+const H = 540;
+const HERO_H = 340;
 
 type Props = {
   slug: string | null;
@@ -96,13 +96,6 @@ export default function ProjectWindow({ slug, onClose, zIndex, onFocus }: Props)
           style={{ position: "absolute", inset: 0, cursor: "grab", zIndex: 1 }}
         />
 
-        {/* close — white bg so it's visible over the hero */}
-        <div
-          style={{ position: "absolute", right: 10, top: 10, zIndex: 3, background: "white", padding: 2 }}
-          onMouseDown={(e) => e.stopPropagation()}
-        >
-          <CloseButton onClick={onClose} ariaLabel="Close project window" />
-        </div>
 
         {/* hero — full bleed, no border */}
         <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: HERO_H, overflow: "hidden", background: "#f0f0f0" }}>
@@ -138,7 +131,7 @@ export default function ProjectWindow({ slug, onClose, zIndex, onFocus }: Props)
           flexDirection: "column",
           justifyContent: "space-between",
         }}>
-          {/* top row: title + links */}
+          {/* top row: title + links + close */}
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
             <div>
               <div style={{ fontSize: 22, fontWeight: 700, lineHeight: 1.1 }}>{active.title}</div>
@@ -147,24 +140,22 @@ export default function ProjectWindow({ slug, onClose, zIndex, onFocus }: Props)
               )}
             </div>
 
-            {active.links && active.links.length > 0 && (
-              <div
-                style={{ display: "flex", gap: 16, alignItems: "center", pointerEvents: "auto" }}
-                onMouseDown={(e) => e.stopPropagation()}
-              >
-                {active.links.map((l, i) => (
-                  <a
-                    key={`${l.label}-${i}`}
-                    href={l.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    style={{ fontSize: 13, fontWeight: 700, color: "black", textDecoration: "underline", textUnderlineOffset: 3 }}
-                  >
-                    {l.label}
-                  </a>
-                ))}
+            <div style={{ display: "flex", gap: 16, alignItems: "center", pointerEvents: "auto" }} onMouseDown={(e) => e.stopPropagation()}>
+              {active.links && active.links.map((l, i) => (
+                <a
+                  key={`${l.label}-${i}`}
+                  href={l.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  style={{ fontSize: 13, fontWeight: 700, color: "black", textDecoration: "underline", textUnderlineOffset: 3 }}
+                >
+                  {l.label}
+                </a>
+              ))}
+              <div onMouseDown={(e) => e.stopPropagation()}>
+                <CloseButton onClick={onClose} ariaLabel="Close project window" />
               </div>
-            )}
+            </div>
           </div>
 
           {/* bottom row: stack as a single line */}
