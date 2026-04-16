@@ -5,8 +5,9 @@ import { useEffect, useRef, useState } from "react";
 import { PROJECTS } from "@/lib/projects";
 import CloseButton from "@/components/CloseButton";
 
-const W = 700;
+const W = 720;
 const H = 480;
+const HERO_H = 280;
 
 type Props = {
   slug: string | null;
@@ -20,7 +21,7 @@ export default function ProjectWindow({ slug, onClose, zIndex, onFocus }: Props)
   const draggingRef = useRef(false);
   const offsetRef = useRef({ x: 0, y: 0 });
   const scaleRef = useRef(1);
-  const [pos, setPos] = useState({ x: 346, y: 180 });
+  const [pos, setPos] = useState({ x: 336, y: 160 });
 
   function clamp(n: number, min: number, max: number) {
     return Math.max(min, Math.min(max, n));
@@ -28,7 +29,6 @@ export default function ProjectWindow({ slug, onClose, zIndex, onFocus }: Props)
 
   useEffect(() => {
     if (!slug) return;
-
     function onMove(e: MouseEvent) {
       if (!draggingRef.current) return;
       const host = hostRef.current;
@@ -42,11 +42,7 @@ export default function ProjectWindow({ slug, onClose, zIndex, onFocus }: Props)
         y: clamp(nextY, 10, 900 - H - 10),
       });
     }
-
-    function onUp() {
-      draggingRef.current = false;
-    }
-
+    function onUp() { draggingRef.current = false; }
     window.addEventListener("mousemove", onMove);
     window.addEventListener("mouseup", onUp);
     return () => {
@@ -71,7 +67,6 @@ export default function ProjectWindow({ slug, onClose, zIndex, onFocus }: Props)
       onClick={(e) => e.stopPropagation()}
       style={{ position: "absolute", inset: 0, zIndex: zIndex ?? 83, pointerEvents: "none" }}
     >
-      {/* window */}
       <div
         onMouseDownCapture={() => onFocus?.()}
         style={{
@@ -101,56 +96,69 @@ export default function ProjectWindow({ slug, onClose, zIndex, onFocus }: Props)
           style={{ position: "absolute", inset: 0, cursor: "grab", zIndex: 1 }}
         />
 
-        {/* close */}
+        {/* close — white bg so it's visible over the hero */}
         <div
-          style={{ position: "absolute", right: 9, top: 9, zIndex: 3 }}
+          style={{ position: "absolute", right: 10, top: 10, zIndex: 3, background: "white", padding: 2 }}
           onMouseDown={(e) => e.stopPropagation()}
         >
           <CloseButton onClick={onClose} ariaLabel="Close project window" />
         </div>
 
-        {/* content — pointerEvents:none so drag layer stays active over empty areas */}
-        <div style={{ position: "absolute", inset: 0, zIndex: 2, pointerEvents: "none" }}>
+        {/* hero — full bleed, no border */}
+        <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: HERO_H, overflow: "hidden", background: "#f0f0f0" }}>
+          {active.heroSrc ? (
+            <Image
+              src={active.heroSrc}
+              alt={`${active.title} screenshot`}
+              fill
+              style={{ objectFit: "cover" }}
+              priority
+            />
+          ) : (
+            <div style={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 13, fontWeight: 700 }}>
+              Coming soon...
+            </div>
+          )}
+        </div>
 
-          {/* left column — flex so stack + links never overlap */}
-          <div style={{
-            position: "absolute",
-            left: 24,
-            top: 22,
-            width: 200,
-            bottom: 24,
-            display: "flex",
-            flexDirection: "column",
-            gap: 10,
-          }}>
-            <div style={{ fontSize: 17, fontWeight: 700 }}>{active.title}</div>
-            <div style={{ fontSize: 13, fontWeight: 700 }}>{active.deadpan ?? ""}</div>
+        {/* divider */}
+        <div style={{ position: "absolute", top: HERO_H, left: 0, right: 0, borderTop: "1px solid black", zIndex: 2 }} />
 
-            {active.stack && active.stack.length > 0 && (
-              <div style={{ marginTop: 8 }}>
-                <div style={{ fontSize: 12, fontWeight: 700, marginBottom: 4 }}>Stack</div>
-                <div style={{ fontSize: 11, fontWeight: 700, lineHeight: 1.7 }}>
-                  {active.stack.join("  ·  ")}
-                </div>
-              </div>
-            )}
+        {/* info band — pointerEvents none except links */}
+        <div style={{
+          position: "absolute",
+          top: HERO_H + 1,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          zIndex: 2,
+          pointerEvents: "none",
+          padding: "16px 24px 18px",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+        }}>
+          {/* top row: title + links */}
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
+            <div>
+              <div style={{ fontSize: 22, fontWeight: 700, lineHeight: 1.1 }}>{active.title}</div>
+              {active.deadpan && (
+                <div style={{ fontSize: 12, fontWeight: 700, marginTop: 5, opacity: 0.7 }}>{active.deadpan}</div>
+              )}
+            </div>
 
-            {/* links */}
             {active.links && active.links.length > 0 && (
-              <div style={{ marginTop: 8, display: "flex", flexDirection: "column", gap: 8, pointerEvents: "auto" }} onMouseDown={(e) => e.stopPropagation()}>
+              <div
+                style={{ display: "flex", gap: 16, alignItems: "center", pointerEvents: "auto" }}
+                onMouseDown={(e) => e.stopPropagation()}
+              >
                 {active.links.map((l, i) => (
                   <a
                     key={`${l.label}-${i}`}
                     href={l.href}
                     target="_blank"
                     rel="noreferrer"
-                    style={{
-                      fontSize: 15,
-                      fontWeight: 700,
-                      color: "black",
-                      textDecoration: "underline",
-                      textUnderlineOffset: 3,
-                    }}
+                    style={{ fontSize: 13, fontWeight: 700, color: "black", textDecoration: "underline", textUnderlineOffset: 3 }}
                   >
                     {l.label}
                   </a>
@@ -159,46 +167,15 @@ export default function ProjectWindow({ slug, onClose, zIndex, onFocus }: Props)
             )}
           </div>
 
-          {/* hero */}
-          <div
-            style={{
-              width: 420,
-              height: 320,
-              left: 240,
-              top: 100,
-              position: "absolute",
-              overflow: "hidden",
-              background: "white",
-              border: "1px solid black",
-            }}
-          >
-            {active.heroSrc ? (
-              <Image
-                src={active.heroSrc}
-                alt={`${active.title} screenshot`}
-                width={340}
-                height={240}
-                style={{ width: "100%", height: "100%", objectFit: "cover" }}
-                priority
-              />
-            ) : (
-              <div
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  fontSize: 13,
-                  fontWeight: 700,
-                }}
-              >
-                Coming soon...
-              </div>
-            )}
-          </div>
-
+          {/* bottom row: stack as a single line */}
+          {active.stack && active.stack.length > 0 && (
+            <div style={{ display: "flex", alignItems: "baseline", gap: 8 }}>
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" }}>Stack</span>
+              <span style={{ fontSize: 11, fontWeight: 700, opacity: 0.7 }}>{active.stack.join("  ·  ")}</span>
+            </div>
+          )}
         </div>
+
       </div>
     </div>
   );
