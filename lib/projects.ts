@@ -52,7 +52,7 @@ export type ProjectRow = {
       heroSrc: "/previews/defcon2.png",
       deadpan: "Kinetic energy analysis system.",
       description: "A client-side kinetic energy analysis system that uses computer vision to detect and measure motion intensity in popular music videos — all processed in the browser via WebGL.",
-      year: "2025",
+      year: "2026",
       stack: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS v4", "TensorFlow.js", "COCO-SSD (client-side, WebGL)", "Cloudflare R2 (video CDN)"],
       links: [{ label: "Live Demo", href: "https://defcon-system.vercel.app" }, { label: "GitHub", href: "https://github.com/swaetamir/defcon" }],
     },
