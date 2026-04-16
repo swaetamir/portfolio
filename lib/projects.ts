@@ -49,7 +49,7 @@ export type ProjectRow = {
       heroSrc: "/previews/defcon2.png",
       deadpan: "Kinetic energy analysis system.",
       year: "2025",
-      stack: [],
+      stack: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS v4", "TensorFlow.js", "COCO-SSD (client-side, WebGL)", "Cloudflare R2 (video CDN)"],
       links: [{ label: "Live Demo", href: "https://defcon-system.vercel.app" }, { label: "GitHub", href: "https://github.com/swaetamir/defcon" }],
     },
     {
