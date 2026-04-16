@@ -134,9 +134,14 @@ export default function ProjectWindow({ slug, onClose, zIndex, onFocus }: Props)
           {/* top row: title + links + close */}
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
             <div>
-              <div style={{ fontSize: 22, fontWeight: 700, lineHeight: 1.1 }}>{active.title}</div>
-              {active.deadpan && (
-                <div style={{ fontSize: 12, fontWeight: 700, marginTop: 5, opacity: 0.7 }}>{active.deadpan}</div>
+              <div style={{ display: "flex", alignItems: "baseline", gap: 10 }}>
+                <div style={{ fontSize: 22, fontWeight: 700, lineHeight: 1.1 }}>{active.title}</div>
+                {active.year && <div style={{ fontSize: 11, fontWeight: 700, opacity: 0.5 }}>{active.year}</div>}
+              </div>
+              {(active.description || active.deadpan) && (
+                <div style={{ fontSize: 12, fontWeight: 700, marginTop: 6, lineHeight: 1.6, maxWidth: 420, opacity: 0.8 }}>
+                  {active.description ?? active.deadpan}
+                </div>
               )}
             </div>
 
