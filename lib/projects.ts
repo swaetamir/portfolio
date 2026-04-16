@@ -46,7 +46,7 @@ export type ProjectRow = {
       top: 376,
       previewSrc: "/previews/defcon.png",
       previewOpacity: 0.3,
-      heroSrc: "/previews/defcon.png",
+      heroSrc: "/previews/defcon2.png",
       deadpan: "Kinetic energy analysis system.",
       year: "2025",
       stack: [],
