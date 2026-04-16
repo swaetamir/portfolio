@@ -112,45 +112,51 @@ export default function ProjectWindow({ slug, onClose, zIndex, onFocus }: Props)
         {/* content — pointerEvents:none so drag layer stays active over empty areas */}
         <div style={{ position: "absolute", inset: 0, zIndex: 2, pointerEvents: "none" }}>
 
-          {/* left column */}
-          <div style={{ left: 24, top: 22, position: "absolute", fontSize: 17, fontWeight: 700 }}>
-            {active.title}
-          </div>
+          {/* left column — flex so stack + links never overlap */}
+          <div style={{
+            position: "absolute",
+            left: 24,
+            top: 22,
+            width: 200,
+            bottom: 24,
+            display: "flex",
+            flexDirection: "column",
+            gap: 10,
+          }}>
+            <div style={{ fontSize: 17, fontWeight: 700 }}>{active.title}</div>
+            <div style={{ fontSize: 13, fontWeight: 700 }}>{active.deadpan ?? ""}</div>
 
-          <div style={{ left: 24, top: 44, position: "absolute", fontSize: 13, fontWeight: 700 }}>
-            {active.deadpan ?? ""}
-          </div>
+            {active.stack && active.stack.length > 0 && (
+              <div style={{ marginTop: 8 }}>
+                <div style={{ fontSize: 12, fontWeight: 700, marginBottom: 4 }}>Stack</div>
+                <div style={{ fontSize: 11, fontWeight: 700, lineHeight: 1.7 }}>
+                  {active.stack.join("  ·  ")}
+                </div>
+              </div>
+            )}
 
-          <div style={{ left: 24, top: 82, position: "absolute", fontSize: 12, fontWeight: 700 }}>
-            Stack
-          </div>
-
-          <div style={{ left: 24, top: 96, position: "absolute", fontSize: 12, fontWeight: 700, width: 175, lineHeight: 1.6 }}>
-            {active.stack?.join("  ·  ") ?? ""}
-          </div>
-
-          {/* links — restore pointer events so they're clickable */}
-          <div style={{ pointerEvents: "auto" }} onMouseDown={(e) => e.stopPropagation()}>
-            {active.links?.map((l, i) => (
-              <a
-                key={`${l.label}-${i}`}
-                href={l.href}
-                target="_blank"
-                rel="noreferrer"
-                style={{
-                  left: 24,
-                  top: 170 + i * 24,
-                  position: "absolute",
-                  fontSize: 15,
-                  fontWeight: 700,
-                  color: "black",
-                  textDecoration: "underline",
-                  textUnderlineOffset: 3,
-                }}
-              >
-                {l.label}
-              </a>
-            ))}
+            {/* links */}
+            {active.links && active.links.length > 0 && (
+              <div style={{ marginTop: 8, display: "flex", flexDirection: "column", gap: 8, pointerEvents: "auto" }} onMouseDown={(e) => e.stopPropagation()}>
+                {active.links.map((l, i) => (
+                  <a
+                    key={`${l.label}-${i}`}
+                    href={l.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    style={{
+                      fontSize: 15,
+                      fontWeight: 700,
+                      color: "black",
+                      textDecoration: "underline",
+                      textUnderlineOffset: 3,
+                    }}
+                  >
+                    {l.label}
+                  </a>
+                ))}
+              </div>
+            )}
           </div>
 
           {/* hero */}
