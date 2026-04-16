@@ -163,11 +163,11 @@ export default function ProjectWindow({ slug, onClose, zIndex, onFocus }: Props)
             </div>
           </div>
 
-          {/* bottom row: stack as a single line */}
+          {/* bottom row: stack wrapping */}
           {active.stack && active.stack.length > 0 && (
-            <div style={{ display: "flex", alignItems: "baseline", gap: 8 }}>
-              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" }}>Stack</span>
-              <span style={{ fontSize: 11, fontWeight: 700, opacity: 0.7 }}>{active.stack.join("  ·  ")}</span>
+            <div style={{ display: "flex", alignItems: "flex-start", gap: 8 }}>
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", whiteSpace: "nowrap", paddingTop: 1 }}>Stack</span>
+              <span style={{ fontSize: 11, fontWeight: 700, opacity: 0.7, lineHeight: 1.7 }}>{active.stack.join("  ·  ")}</span>
             </div>
           )}
         </div>
