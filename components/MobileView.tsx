@@ -144,14 +144,6 @@ function ContactScreen({ onBack }: { onBack: () => void }) {
         >
           github
         </a>
-        <a
-          href="https://substack.com/@thedatastudioarchive"
-          target="_blank"
-          rel="noreferrer"
-          style={{ fontSize: 20, fontWeight: 700, color: "black", textDecoration: "underline", textUnderlineOffset: 4 }}
-        >
-          substack
-        </a>
       </div>
     </div>
   );

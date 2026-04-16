@@ -127,22 +127,6 @@ type Props = {
           github
         </a>
 
-        <a
-          href="https://substack.com/@thedatastudioarchive"
-          target="_blank"
-          rel="noreferrer"
-          className="absolute underline underline-offset-4"
-          style={{
-            left: 47,
-            top: 135,
-            color: "black",
-            fontSize: 20,
-            fontWeight: 700,
-          }}
-        >
-          substack
-        </a>
-
         {/* close button */}
         <div style={{ position: "absolute", top: 9, right: 10 }}>
         <CloseButton onClick={onClose} ariaLabel="Close contact popup" />
