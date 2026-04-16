@@ -58,7 +58,7 @@ export type ProjectRow = {
       top: 512,
       previewSrc: "/previews/membox.png",
       previewOpacity: 0.3,
-      heroSrc: "/previews/membox.png",
+      heroSrc: "/previews/memorybox.gif",
       deadpan: "Memory box curated for a loved one with real-time sharing",
       year: "2026",
       stack: ["React", "TypeScript", "ML (light)", "Supabase"],
