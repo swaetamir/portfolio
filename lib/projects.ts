@@ -38,7 +38,7 @@ export type ProjectRow = {
       deadpan: "My listening habits, observed over time.",
       year: "2025–2026",
       stack: ["Next.js", "Spotify API", "Charts", "Data viz"],
-      links: [{ label: "GitHub", href: "https://github.com/swaetamir/preference-drift" }],
+      links: [{ label: "Live Demo", href: "https://preference-drift.vercel.app" }, { label: "GitHub", href: "https://github.com/swaetamir/preference-drift" }],
     },
     {
       slug: "defcon",
@@ -48,7 +48,7 @@ export type ProjectRow = {
       deadpan: "Kinetic energy analysis system.",
       year: "2025",
       stack: [],
-      links: [],
+      links: [{ label: "Live Demo", href: "https://defcon-system.vercel.app" }, { label: "GitHub", href: "https://github.com/swaetamir/defcon" }],
     },
     {
       slug: "hackathon",
