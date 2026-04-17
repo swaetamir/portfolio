@@ -68,7 +68,7 @@ export type ProjectRow = {
       previewSrc: "/previews/membox.png",
       previewOpacity: 0.3,
       heroSrc: "/previews/membox.gif",
-      heroScale: 1.4,
+      heroScale: 1.2,
       deadpan: "A real-time shared memory box.",
       description: "Built in 24 hours at a hackathon. A real-time app for sending curated memory boxes to people you care about — focused on friendship, reconnection, and presence.",
       year: "2026",
