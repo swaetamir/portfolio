@@ -45,6 +45,7 @@ export default function Home() {
         previewOpacity: p.previewOpacity,
         top: p.top,
         disabled: p.disabled,
+        deadpan: p.deadpan,
       })),
     []
   );

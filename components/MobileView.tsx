@@ -198,7 +198,8 @@ function ProjectsScreen({ onBack, onSelect }: { onBack: () => void; onSelect: (s
                 fontWeight: 700,
               }}
             >
-              {p.title}
+              <div style={{ fontSize: 18, fontWeight: 700 }}>{p.title}</div>
+              {p.deadpan && <div style={{ fontSize: 10, fontWeight: 700, marginTop: 3, opacity: 0.6 }}>{p.deadpan}</div>}
             </div>
           </button>
         ))}
