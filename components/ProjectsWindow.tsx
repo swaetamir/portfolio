@@ -199,7 +199,7 @@ export default function ProjectsWindow({ open, onClose, onSelect, projects, zInd
                     }}
                   >
                     <div style={{ fontSize: 20, fontWeight: 700 }}>{p.title}</div>
-                    {p.deadpan && <div style={{ fontSize: 11, fontWeight: 700, marginTop: 4, opacity: 0.6 }}>{p.deadpan}</div>}
+                    {p.deadpan && <div style={{ fontSize: 11, fontWeight: 700, marginTop: 8, opacity: 0.6 }}>{p.deadpan}</div>}
                   </div>
                 </button>
               );
