@@ -217,7 +217,7 @@ function ProjectScreen({ slug, onBack }: { slug: string; onBack: () => void }) {
       </div>
 
       <div style={{ fontSize: 20, fontWeight: 700, marginBottom: 6 }}>{project.title}</div>
-      <div style={{ fontSize: 13, fontWeight: 700, marginBottom: 20 }}>{project.deadpan}</div>
+      <div style={{ fontSize: 13, fontWeight: 700, marginBottom: 20, lineHeight: 1.6 }}>{project.description ?? project.deadpan}</div>
 
       {project.heroSrc && (
         <div
