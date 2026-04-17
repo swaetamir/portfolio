@@ -104,7 +104,7 @@ export default function ProjectWindow({ slug, onClose, zIndex, onFocus }: Props)
               src={active.heroSrc}
               alt={`${active.title} screenshot`}
               fill
-              style={{ objectFit: active.heroFit ?? "cover" }}
+              style={{ objectFit: active.heroFit ?? "cover", objectPosition: active.heroPosition ?? "center" }}
               priority
             />
           ) : (
