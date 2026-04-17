@@ -44,6 +44,7 @@ export default function Home() {
         previewSrc: p.previewSrc,
         previewOpacity: p.previewOpacity,
         top: p.top,
+        disabled: p.disabled,
       })),
     []
   );

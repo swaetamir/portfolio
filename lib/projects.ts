@@ -17,6 +17,7 @@ export type ProjectRow = {
     heroFit?: "cover" | "contain";
     heroPosition?: string;
     heroScale?: number;
+    disabled?: boolean;
   };
 
   export const PROJECTS: ProjectRow[] = [
@@ -28,11 +29,11 @@ export type ProjectRow = {
       previewOpacity: 0.3,
       heroSrc: "/previews/spiral.gif",
       heroPosition: "center top",
-      deadpan: "Spiral of all things data.",
+      deadpan: "A 3D data archive, handcoded in Three.js",
       description: "A handcoded 3D spiral built in Three.js to visualize data-related articles and writing. Each point in the spiral maps to a piece of content from the archive.",
       year: "2026",
       stack: ["Next.js", "TypeScript", "React Three Fiber", "Three.js", "Tailwind CSS"],
-      links: [{ label: "Live Demo", href:"https://thespiral.vercel.app"}, { label: "GitHub", href:"https://github.com/swaetamir/datastudio.git"},{ label: "Substack", href:"https://substack.com/@thedatastudioarchive"}]
+      links: [{ label: "Live Demo", href: "https://thespiral.vercel.app" }, { label: "GitHub", href: "https://github.com/swaetamir/datastudio.git" }]
     },
     {
       slug: "preference-drift",
@@ -42,7 +43,7 @@ export type ProjectRow = {
       previewOpacity: 0.3,
       heroSrc: "/previews/tastemap.gif",
       heroPosition: "center 60%",
-      deadpan: "My listening habits, observed over time.",
+      deadpan: "9 years of Spotify listening, made visible",
       description: "A visual analysis of 9 years of Spotify listening data (2017–Feb 2026). Uses the Spotify API to surface long-term shifts in taste, genre, and artist affinity over time.",
       year: "2025–2026",
       stack: ["Next.js", "Spotify API", "Charts", "Data viz"],
@@ -55,7 +56,7 @@ export type ProjectRow = {
       previewSrc: "/previews/defcon.png",
       previewOpacity: 0.3,
       heroSrc: "/previews/defcon2.png",
-      deadpan: "Kinetic energy analysis system.",
+      deadpan: "Computer vision applied to music video motion",
       description: "A client-side kinetic energy analysis system that uses computer vision to detect and measure motion intensity in popular music videos — all processed in the browser via WebGL.",
       year: "2026",
       stack: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS v4", "TensorFlow.js", "COCO-SSD (client-side, WebGL)", "Cloudflare R2 (video CDN)"],
@@ -69,7 +70,7 @@ export type ProjectRow = {
       previewOpacity: 0.3,
       heroSrc: "/previews/membox.gif",
       heroScale: 1.05,
-      deadpan: "A real-time shared memory box.",
+      deadpan: "Real-time memory sharing, built in 24 hours",
       description: "Built in 24 hours at a hackathon. A real-time app for sending curated memory boxes to people you care about — focused on friendship, reconnection, and presence.",
       year: "2026",
       stack: ["React", "TypeScript", "ML (light)", "Supabase"],
@@ -79,9 +80,10 @@ export type ProjectRow = {
       slug: "rl-comp579",
       title: "RL Project (COMP579)",
       top: 648,
-      deadpan: "Coming soon.",
+      deadpan: "SARSA vs. Expected SARSA — coming soon",
       description: "A comparison of SARSA and Expected SARSA in tabular reinforcement learning environments. Coming soon.",
       year: "2026",
       stack: ["Python", "NumPy", "RL"],
+      disabled: true,
     },
   ];

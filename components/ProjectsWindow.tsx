@@ -10,6 +10,7 @@ type ProjectRow = {
   previewSrc?: string;
   previewOpacity?: number;
   top: number;
+  disabled?: boolean;
 };
 
 type Props = {
@@ -147,8 +148,8 @@ export default function ProjectsWindow({ open, onClose, onSelect, projects, zInd
                 <button
                   key={p.slug}
                   type="button"
-                  onClick={() => onSelect(p.slug)}
-                  onMouseEnter={() => setHoveredSlug(p.slug)}
+                  onClick={() => !p.disabled && onSelect(p.slug)}
+                  onMouseEnter={() => !p.disabled && setHoveredSlug(p.slug)}
                   onMouseLeave={() => setHoveredSlug(null)}
                   style={{
                     width: "100%",
@@ -159,10 +160,10 @@ export default function ProjectsWindow({ open, onClose, onSelect, projects, zInd
                     background: "white",
                     color: "black",
                     display: "block",
-                    cursor: "pointer",
+                    cursor: p.disabled ? "default" : "pointer",
                     padding: 0,
                     transform: isHovered ? "scale(1.03)" : "scale(1)",
-                    opacity: dimmed ? 0.5 : 1,
+                    opacity: dimmed ? 0.5 : p.disabled ? 0.4 : 1,
                     transition: "transform 0.15s ease, opacity 0.15s ease, outline 0.15s ease",
                     zIndex: isHovered ? 1 : 0,
                     outline: isHovered ? "1px solid black" : "none",

@@ -164,17 +164,18 @@ function ProjectsScreen({ onBack, onSelect }: { onBack: () => void; onSelect: (s
           <button
             key={p.slug}
             type="button"
-            onClick={() => onSelect(p.slug)}
+            onClick={() => !p.disabled && onSelect(p.slug)}
             style={{
               width: "100%",
               height: 90,
               position: "relative",
+              cursor: p.disabled ? "default" : "pointer",
+              opacity: p.disabled ? 0.4 : 1,
               overflow: "hidden",
               borderTop: i === 0 ? "none" : "1px solid black",
               background: "white",
               color: "black",
               display: "block",
-              cursor: "pointer",
               padding: 0,
             }}
           >
