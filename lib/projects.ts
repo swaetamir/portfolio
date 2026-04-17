@@ -39,7 +39,7 @@ export type ProjectRow = {
       previewSrc: "/previews/preference-drift.png",
       previewOpacity: 0.3,
       heroSrc: "/previews/tastemap.gif",
-      heroPosition: "center 70%",
+      heroPosition: "center 60%",
       deadpan: "My listening habits, observed over time.",
       description: "A visual analysis of 9 years of Spotify listening data (2017–Feb 2026). Uses the Spotify API to surface long-term shifts in taste, genre, and artist affinity over time.",
       year: "2025–2026",
