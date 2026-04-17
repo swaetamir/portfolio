@@ -26,7 +26,7 @@ export type ProjectRow = {
       previewSrc: "/previews/spiral.gif",
       previewOpacity: 0.3,
       heroSrc: "/previews/spiral.gif",
-      heroPosition: "center 40%",
+      heroPosition: "center 25%",
       deadpan: "Spiral of all things data.",
       description: "A handcoded 3D spiral built in Three.js to visualize data-related articles and writing. Each point in the spiral maps to a piece of content from the archive.",
       year: "2026",
