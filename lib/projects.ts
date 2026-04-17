@@ -16,6 +16,7 @@ export type ProjectRow = {
     heroSrc?: string; // big screenshot on the poster page
     heroFit?: "cover" | "contain";
     heroPosition?: string;
+    heroScale?: number;
   };
 
   export const PROJECTS: ProjectRow[] = [
@@ -67,6 +68,7 @@ export type ProjectRow = {
       previewSrc: "/previews/membox.png",
       previewOpacity: 0.3,
       heroSrc: "/previews/membox.gif",
+      heroScale: 1.4,
       deadpan: "A real-time shared memory box.",
       description: "Built in 24 hours at a hackathon. A real-time app for sending curated memory boxes to people you care about — focused on friendship, reconnection, and presence.",
       year: "2026",
