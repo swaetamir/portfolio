@@ -192,10 +192,11 @@ function ProjectsScreen({ onBack, onSelect }: { onBack: () => void; onSelect: (s
                 position: "absolute",
                 inset: 0,
                 display: "flex",
+                flexDirection: "column",
                 alignItems: "center",
                 justifyContent: "center",
-                fontSize: 18,
-                fontWeight: 700,
+                textAlign: "center",
+                padding: "0 16px",
               }}
             >
               <div style={{ fontSize: 18, fontWeight: 700 }}>{p.title}</div>
