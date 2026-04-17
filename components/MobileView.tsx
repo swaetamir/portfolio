@@ -234,7 +234,7 @@ function ProjectScreen({ slug, onBack }: { slug: string; onBack: () => void }) {
             src={project.heroSrc}
             alt={`${project.title} screenshot`}
             fill
-            style={{ objectFit: "cover" }}
+            style={{ objectFit: project.heroFit ?? "cover" }}
           />
         </div>
       )}

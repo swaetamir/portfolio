@@ -14,6 +14,7 @@ export type ProjectRow = {
     stack?: string[];
     links?: { label: string; href: string }[];
     heroSrc?: string; // big screenshot on the poster page
+    heroFit?: "cover" | "contain";
   };
 
   export const PROJECTS: ProjectRow[] = [
@@ -37,6 +38,7 @@ export type ProjectRow = {
       previewSrc: "/previews/preference-drift.png",
       previewOpacity: 0.3,
       heroSrc: "/previews/tastemap.gif",
+      heroFit: "contain",
       deadpan: "My listening habits, observed over time.",
       description: "A visual analysis of 9 years of Spotify listening data (2017–Feb 2026). Uses the Spotify API to surface long-term shifts in taste, genre, and artist affinity over time.",
       year: "2025–2026",
